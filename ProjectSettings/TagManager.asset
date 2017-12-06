@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Slingshot
   - Block
-  - Slingshot Camera
   layers:
   - Default
   - TransparentFX
