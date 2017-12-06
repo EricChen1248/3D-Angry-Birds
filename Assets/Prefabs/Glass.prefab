@@ -9,47 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1753387707548172}
+  m_RootGameObject: {fileID: 1089845130639826}
   m_IsPrefabParent: 1
---- !u!1 &1753387707548172
+--- !u!1 &1089845130639826
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4516221883397088}
-  - component: {fileID: 33660650946044486}
-  - component: {fileID: 65748833137977696}
-  - component: {fileID: 23667693475404184}
-  - component: {fileID: 54336626321579782}
-  - component: {fileID: 114745666695737006}
+  - component: {fileID: 4656467370726950}
+  - component: {fileID: 33153902739875958}
+  - component: {fileID: 65136290786887984}
+  - component: {fileID: 23563005855345518}
+  - component: {fileID: 54585781171122154}
+  - component: {fileID: 114827570205693880}
   m_Layer: 0
-  m_Name: Short Wooden Block (1)
-  m_TagString: Block
+  m_Name: Glass
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4516221883397088
+--- !u!4 &4656467370726950
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1753387707548172}
+  m_GameObject: {fileID: 1089845130639826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.31, y: 1.19, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalPosition: {x: 0.49, y: 6.59, z: 2.78}
+  m_LocalScale: {x: 1, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23667693475404184
+--- !u!23 &23563005855345518
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1753387707548172}
+  m_GameObject: {fileID: 1089845130639826}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -58,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 102e5674a8ed86746bf6f1c92d6d6f37, type: 2}
+  - {fileID: 2100000, guid: b259913f2fb4f2549901e76bf3a9d025, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,19 +78,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33660650946044486
+--- !u!33 &33153902739875958
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1753387707548172}
+  m_GameObject: {fileID: 1089845130639826}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54336626321579782
+--- !u!54 &54585781171122154
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1753387707548172}
+  m_GameObject: {fileID: 1089845130639826}
   serializedVersion: 2
   m_Mass: 0.5
   m_Drag: 0
@@ -100,27 +100,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65748833137977696
+--- !u!65 &65136290786887984
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1753387707548172}
-  m_Material: {fileID: 13400000, guid: 504cd37ba61bb7d40bf5f85662f40e42, type: 2}
+  m_GameObject: {fileID: 1089845130639826}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114745666695737006
+--- !u!114 &114827570205693880
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1753387707548172}
+  m_GameObject: {fileID: 1089845130639826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c8550a5ce9ecda46bea13824ca5daf9, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d1941378b2a9a04689bd5fd50b91b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BreakThreshold: 7.5
+  BreakThreshold: 6
+  GlassPrefab: {fileID: 1089845130639826}

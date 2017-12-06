@@ -37,7 +37,7 @@ namespace Birds
 
             if (Rigidbody.useGravity)
             {
-               Rigidbody.AddForce(-Physics.gravity * 0.8f);
+               Rigidbody.AddForce(-Physics.gravity * 0.6f);
             }
         }
 

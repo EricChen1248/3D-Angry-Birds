@@ -23,14 +23,18 @@ public class Blocks : MonoBehaviour, IBreakables
     private void OnCollisionEnter(Collision collision)
     {
         var impact = collision.relativeVelocity.magnitude * collision.gameObject.GetComponent<Rigidbody>().mass;
-        Debug.Log(impact);
         if (!(impact > BreakThreshold)) return;
-        Break();
+        Break(impact * impact / BreakThreshold / BreakThreshold);
     }
 
 
-    public void Break()
+    public virtual void Break(float impactRate)
     {
+        StartCoroutine(CoUpdate(impactRate));
+    }
+
+    internal IEnumerator CoUpdate (float impactRate){
+        yield return new WaitForSeconds(0.2f / impactRate);
         Destroy(gameObject);
     }
 }

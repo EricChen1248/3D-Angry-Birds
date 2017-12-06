@@ -2,6 +2,6 @@
 {
     internal interface IBreakables
     {
-        void Break();
+        void Break(float impactRate);
     }
 }
