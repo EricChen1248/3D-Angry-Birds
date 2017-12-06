@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 23376351154711034}
   - component: {fileID: 114113531701337004}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Bird
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
