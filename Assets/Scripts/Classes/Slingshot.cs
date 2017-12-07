@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Controllers;
 using UnityEngine;
 
 namespace Classes
@@ -11,6 +10,7 @@ namespace Classes
         public GameObject[] Birds;
         public GameObject Pouch;
         private readonly Queue<GameObject> birdsList = new Queue<GameObject>();
+        private float zoom = 10f;
 
 
         // Use this for initialization
@@ -25,9 +25,16 @@ namespace Classes
         // Update is called once per frame
         internal void FixedUpdate ()
         {
-            var rotation = Input.GetAxisRaw("Spin") * RotationSpeed;
+            zoom += Input.GetAxisRaw("Zoom") / 5;
+            Mathf.Clamp(zoom, 1, 15);
+            var fpCamera = transform.Find("Camera").GetComponent<Camera>();
+            fpCamera.fieldOfView = 75 * zoom / 10;
+
+            var rotation = Input.GetAxisRaw("Spin") * RotationSpeed * zoom / 10;
             transform.Rotate(new Vector3(0, rotation, 0));
-         
+
+
+
             // Handles Drawing the slingshot line
             var lineRenderer = GetComponent<LineRenderer>();
 

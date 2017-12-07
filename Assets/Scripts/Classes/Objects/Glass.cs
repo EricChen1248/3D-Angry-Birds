@@ -1,43 +1,37 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Classes.Objects
 {
     internal class Glass : Blocks
     {
+        private static readonly Vector3 Size = new Vector3(1, 0.3f, 1);
+        private static readonly float[] Position = { Size.y + 0.05f, 0, -Size.y - 0.05f };
 
         public override void Break()
         {
-            var scale = transform.localScale;
-            if (scale.y >= 3)
+            if (transform.localScale.y >= 3)
             {
-                var glass = Instantiate(gameObject);
-                glass.transform.parent = transform;
-                glass.transform.localScale = new Vector3(1, 0.3f, 1);
-                glass.transform.localPosition = new Vector3(0, glass.transform.localScale.y + 0.05f,0);
-                glass.transform.localRotation = Quaternion.identity;
-                glass.transform.parent = null;
-
-                glass = Instantiate(gameObject);
-                glass.transform.parent = transform;
-                glass.transform.localScale = new Vector3(1, 0.3f, 1);
-                glass.transform.localPosition = new Vector3(0,0,0);
-                glass.transform.localRotation = Quaternion.identity;
-                glass.transform.parent = null;
-
-                glass = Instantiate(gameObject);
-                glass.transform.parent = transform;
-                glass.transform.localScale = new Vector3(1, 0.3f, 1);
-                glass.transform.localPosition = new Vector3(0, -glass.transform.localScale.y - 0.05f, 0);
-                glass.transform.localRotation = Quaternion.identity;
-                glass.transform.parent = null;
-
+                for (var i = 0; i < 3; i++)
+                {
+                    GenerateSmallGlass(Size, i);
+                }
 
                 Destroy(gameObject);
+                return;
             }
-            else
-            {
-                StartCoroutine(CoUpdate());
-            }
+
+            StartCoroutine(CoUpdate());
+        }
+
+        private void GenerateSmallGlass(Vector3 size, int i)
+        {
+            var glass = Instantiate(gameObject).transform;
+            glass.parent = transform;
+            glass.localScale = size;
+            glass.localPosition = new Vector3(0, Position[i], 0);
+            glass.localRotation = Quaternion.identity;
+            glass.parent = null;
         }
     }
 }
