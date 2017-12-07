@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Classes.Birds
+namespace Classes.Entities
 {
     public class Bird: MonoBehaviour
     {
@@ -69,20 +69,27 @@ namespace Classes.Birds
             // No shooting in camera mode
             if (isShooting == false)
             {
-                return;   
+                return;
             }
             var curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 
             var curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
-            
+
             // Making sure ammo can't go infront of slingshot
-            if ((curPosition - GameObject.FindGameObjectWithTag("Slingshot").transform.position + SlingshotPouch.StartingPosition).z <= 0)
+            if ((curPosition - GameObject.FindGameObjectWithTag("Slingshot").transform.position +
+                 SlingshotPouch.StartingPosition).z <= 0)
             {
-                curPosition.z = GameObject.FindGameObjectWithTag("Slingshot").transform.position.z + SlingshotPouch.StartingPosition.z;
+                curPosition.z = GameObject.FindGameObjectWithTag("Slingshot").transform.position.z +
+                                SlingshotPouch.StartingPosition.z;
             }
             SlingshotPouch.Self.transform.position = curPosition;
             SlingshotPouch.Self.transform.localPosition.Scale(new Vector3(0, 1, 1));
             transform.position = SlingshotPouch.Self.transform.position;
+
+            var fpCamera = SlingshotPouch.Self.transform.parent.Find("Camera");
+            var direction = SlingshotPouch.Self.transform.parent.transform.position + SlingshotPouch.StartingPosition -
+                            transform.position;
+            fpCamera.rotation = Quaternion.LookRotation(direction);
         }
 
         private void OnMouseUp()
@@ -93,7 +100,6 @@ namespace Classes.Birds
 
         private void ReloadAmmo()
         {
-            // TODO : Reload Ammo
             if (SlingshotPouch.Self.GetComponent<SlingshotPouch>().CurrentAmmo != null)
                 return;
 
