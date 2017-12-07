@@ -1,9 +1,6 @@
-﻿using Classes;
-using Controllers;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Birds
+namespace Classes.Birds
 {
     public class Bird: MonoBehaviour
     {
@@ -30,7 +27,7 @@ namespace Birds
         // Update is called once per frame
         private void FixedUpdate ()
         {
-            if (isShooting)
+            if (isShooting == false)
             {
                 Shoot();
             }
@@ -53,12 +50,12 @@ namespace Birds
 
         private Vector3 screenPoint;
         private Vector3 offset;
-        private bool isShooting;
+        private bool isShooting = true;
 
         private void OnMouseDown()
         {
             // No shooting in camera mode
-            if (CoreController.PlayerMode == PlayerMode.CameraMode)
+            if (isShooting == false)
             {
                 return;
             }
@@ -70,7 +67,7 @@ namespace Birds
         private void OnMouseDrag()
         {
             // No shooting in camera mode
-            if (CoreController.PlayerMode == PlayerMode.CameraMode)
+            if (isShooting == false)
             {
                 return;   
             }
@@ -84,37 +81,43 @@ namespace Birds
                 curPosition.z = GameObject.FindGameObjectWithTag("Slingshot").transform.position.z + SlingshotPouch.StartingPosition.z;
             }
             SlingshotPouch.Self.transform.position = curPosition;
-            
             SlingshotPouch.Self.transform.localPosition.Scale(new Vector3(0, 1, 1));
             transform.position = SlingshotPouch.Self.transform.position;
         }
 
         private void OnMouseUp()
         {
-            // Disable Shot
-            CoreController.PlayerMode = PlayerMode.CameraMode;
-            isShooting = true;
+            isShooting = false;
             Rigidbody.useGravity = true;
-            //ReloadAmmo();
         }
 
         private void ReloadAmmo()
         {
             // TODO : Reload Ammo
+            if (SlingshotPouch.Self.GetComponent<SlingshotPouch>().CurrentAmmo != null)
+                return;
+
             SlingshotPouch.Self.GetComponent<SlingshotPouch>().Reset();
-            
+
+
+
         }
 
+
+        // Starts shooting process of bird;
         private void Shoot()
         {
-            var force = SlingshotPouch.StartingPosition - SlingshotPouch.Self.transform.localPosition;
-            Rigidbody.AddRelativeForce(force * 10);
+            var slingshot = SlingshotPouch.Self.transform.parent.transform;
+            var force = slingshot.position + SlingshotPouch.StartingPosition - transform.position;
+            //var force = SlingshotPouch.StartingPosition - SlingshotPouch.Self.transform.localPosition;
+            Rigidbody.AddForce(force * 30);
             SlingshotPouch.Self.transform.position = transform.position;
             if (SlingshotPouch.Self.transform.localPosition.z <= 0)
-            {
-                isShooting = false;
-                ReloadAmmo();
+            {                
                 transform.parent = null;
+                SlingshotPouch.Self.GetComponent<SlingshotPouch>().CurrentAmmo = null;
+                ReloadAmmo();
+                isShooting = true;
             }
         }
     }

@@ -16,9 +16,16 @@ namespace Classes
         public void Reset()
         {
             transform.localPosition = StartingPosition;
+
+            var bird = transform.parent.GetComponent<Slingshot>().Refill();
+            if (bird != null)
+            {
+                var newBird = Instantiate(bird);
+                newBird.transform.parent = transform;
+                newBird.transform.localPosition = new Vector3(0, 0, 0);
+                CurrentAmmo = newBird;
+            }
         }
-
-
-
+        
     }
 }
