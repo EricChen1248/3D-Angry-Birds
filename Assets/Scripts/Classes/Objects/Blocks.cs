@@ -1,40 +1,78 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using Interfaces;
 using UnityEngine;
 
-public class Blocks : MonoBehaviour, IBreakables
+namespace Classes.Objects
 {
+    public class Blocks : MonoBehaviour, IBreakables
+    {
 
-    public float BreakThreshold = 3f;
-	// Use this for initialization
-	void Start () {
-		
-	}
+        public float BreakThreshold = 3f;
+
+        private bool pendingBreak;
+
+        private bool pendingDestroy;
+
+        private float impactRate;
+
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        // Update is called once per frame
+        void Update () {
+            if (pendingBreak && pendingDestroy == false)
+            {
+                pendingDestroy = true;
+                StartCoroutine(CoUpdate());
+            }
+        }
+
+    
+
+        // OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider
+        private void OnCollisionEnter(Collision collision)
+        {
+            var impact = collision.relativeVelocity.magnitude * collision.gameObject.GetComponent<Rigidbody>().mass;
+            if (!(impact > BreakThreshold)) return;
+            impactRate = impact / BreakThreshold;
+            Break();
+        }
 
 
+        public virtual void Break()
+        {
+            if (pendingBreak)
+            {
+                return;
+            }
+            var block = Instantiate(this);
+            var blockScript = block.GetComponent<Blocks>();
+            blockScript.pendingBreak = true;
+            blockScript.impactRate = impactRate;
+            block.transform.parent = transform;
+            block.transform.localScale = new Vector3(1, 0.48f, 1);
+            block.transform.localPosition = new Vector3(0, block.transform.localScale.y, 0);
+            block.transform.localRotation = Quaternion.identity;
+            block.transform.parent = null;
 
-    // OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider
-    private void OnCollisionEnter(Collision collision)
-    {
-        var impact = collision.relativeVelocity.magnitude * collision.gameObject.GetComponent<Rigidbody>().mass;
-        if (!(impact > BreakThreshold)) return;
-        Break(impact * impact / BreakThreshold / BreakThreshold);
-    }
+            block = Instantiate(this);
+            blockScript = block.GetComponent<Blocks>();
+            blockScript.pendingBreak = true;
+            blockScript.impactRate = impactRate;
+            block.transform.parent = transform;
+            block.transform.localScale = new Vector3(1, 0.48f, 1);
+            block.transform.localPosition = new Vector3(0, -block.transform.localScale.y, 0);
+            block.transform.localRotation = Quaternion.identity;
+            block.transform.parent = null;
 
+            Destroy(gameObject);
 
-    public virtual void Break(float impactRate)
-    {
-        StartCoroutine(CoUpdate(impactRate));
-    }
+        }
 
-    internal IEnumerator CoUpdate (float impactRate){
-        yield return new WaitForSeconds(0.2f / impactRate);
-        Destroy(gameObject);
+        internal IEnumerator CoUpdate ()
+        {
+            pendingDestroy = true;
+            pendingBreak = true;
+            yield return new WaitForSeconds(0.5f / impactRate);
+            Destroy(gameObject);
+        }
     }
 }

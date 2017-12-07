@@ -4,33 +4,39 @@ namespace Classes.Objects
 {
     internal class Glass : Blocks
     {
-        public GameObject GlassPrefab;
 
-        public override void Break(float impactRate)
+        public override void Break()
         {
             var scale = transform.localScale;
             if (scale.y >= 3)
             {
-                var glass = Instantiate(GlassPrefab);
-                glass.transform.position = transform.position;
-                glass.transform.localPosition += new Vector3(0, scale.y / 3 + 0.05f, 0);
-                glass.transform.localScale = new Vector3(scale.x, scale.y / 3, scale.z);
+                var glass = Instantiate(gameObject);
+                glass.transform.parent = transform;
+                glass.transform.localScale = new Vector3(1, 0.3f, 1);
+                glass.transform.localPosition = new Vector3(0, glass.transform.localScale.y + 0.05f,0);
+                glass.transform.localRotation = Quaternion.identity;
+                glass.transform.parent = null;
 
-                glass = Instantiate(GlassPrefab);
-                glass.transform.position = transform.position;
-                glass.transform.localScale = new Vector3(scale.x, scale.y / 3, scale.z);
+                glass = Instantiate(gameObject);
+                glass.transform.parent = transform;
+                glass.transform.localScale = new Vector3(1, 0.3f, 1);
+                glass.transform.localPosition = new Vector3(0,0,0);
+                glass.transform.localRotation = Quaternion.identity;
+                glass.transform.parent = null;
 
-                glass = Instantiate(GlassPrefab);
-                glass.transform.position = transform.position;
-                glass.transform.localPosition -= new Vector3(0, scale.y / 3 + 0.05f, 0);
-                glass.transform.localScale = new Vector3(scale.x, scale.y / 3, scale.z);
+                glass = Instantiate(gameObject);
+                glass.transform.parent = transform;
+                glass.transform.localScale = new Vector3(1, 0.3f, 1);
+                glass.transform.localPosition = new Vector3(0, -glass.transform.localScale.y - 0.05f, 0);
+                glass.transform.localRotation = Quaternion.identity;
+                glass.transform.parent = null;
 
 
                 Destroy(gameObject);
             }
             else
             {
-                StartCoroutine(CoUpdate(impactRate));
+                StartCoroutine(CoUpdate());
             }
         }
     }
