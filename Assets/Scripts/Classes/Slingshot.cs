@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace Classes
 {
-    public class Slingshot : MonoBehaviour {
-
+    public class Slingshot : MonoBehaviour
+    {
+        public static Slingshot Instance;
         public const float RotationSpeed = 2f;
         public GameObject[] Birds;
         public GameObject Pouch;
@@ -14,12 +15,14 @@ namespace Classes
 
 
         // Use this for initialization
-        internal void Start () {
+        internal void Start ()
+        {
+            Instance = this;
             foreach (var bird in Birds)
             {
                 birdsList.Enqueue(bird);
             }
-            SlingshotPouch.Self.GetComponent<SlingshotPouch>().Reset();
+            SlingshotPouch.Instance.GetComponent<SlingshotPouch>().Reset();
         }
 	
         // Update is called once per frame

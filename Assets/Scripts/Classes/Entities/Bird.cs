@@ -81,13 +81,13 @@ namespace Classes.Entities
 
             curPosition.y = Mathf.Max(curPosition.y, -0.5f);
 
-            SlingshotPouch.Self.transform.localPosition = curPosition;
-            SlingshotPouch.Self.transform.localPosition.Scale(new Vector3(0, 1, 1));
+            SlingshotPouch.Instance.transform.localPosition = curPosition;
+            SlingshotPouch.Instance.transform.localPosition.Scale(new Vector3(0, 1, 1));
 
             transform.localPosition = Vector3.zero;
 
-            var fpCamera = SlingshotPouch.Self.transform.parent.Find("Camera");
-            var direction = SlingshotPouch.Self.transform.parent.transform.position + SlingshotPouch.StartingPosition -
+            var fpCamera = SlingshotPouch.Instance.transform.parent.Find("Camera");
+            var direction = SlingshotPouch.Instance.transform.parent.transform.position + SlingshotPouch.StartingPosition -
                             transform.position;
             fpCamera.rotation = Quaternion.LookRotation(direction);
         }
@@ -100,10 +100,10 @@ namespace Classes.Entities
 
         private void ReloadAmmo()
         {
-            if (SlingshotPouch.Self.GetComponent<SlingshotPouch>().CurrentAmmo != null)
+            if (SlingshotPouch.Instance.GetComponent<SlingshotPouch>().CurrentAmmo != null)
                 return;
 
-            SlingshotPouch.Self.GetComponent<SlingshotPouch>().Reset();
+            SlingshotPouch.Instance.GetComponent<SlingshotPouch>().Reset();
 
 
 
@@ -113,16 +113,16 @@ namespace Classes.Entities
         // Starts shooting process of bird;
         private void Shoot()
         {
-            var slingshot = SlingshotPouch.Self.transform.parent.transform;
+            var slingshot = SlingshotPouch.Instance.transform.parent.transform;
             var force = slingshot.position + SlingshotPouch.StartingPosition - transform.position;
-            //var force = SlingshotPouch.StartingPosition - SlingshotPouch.Self.transform.localPosition;
+            //var force = SlingshotPouch.StartingPosition - SlingshotPouch.Instance.transform.localPosition;
             Rigidbody.AddForce(force * 30);
             Rigidbody.velocity.Scale(new Vector3(1,3,1));
-            SlingshotPouch.Self.transform.position = transform.position;
-            if (SlingshotPouch.Self.transform.localPosition.z <= 0)
+            SlingshotPouch.Instance.transform.position = transform.position;
+            if (SlingshotPouch.Instance.transform.localPosition.z <= 0)
             {                
                 transform.parent = null;
-                SlingshotPouch.Self.GetComponent<SlingshotPouch>().CurrentAmmo = null;
+                SlingshotPouch.Instance.GetComponent<SlingshotPouch>().CurrentAmmo = null;
                 ReloadAmmo();
                 isShooting = true;
             }

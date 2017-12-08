@@ -6,11 +6,11 @@ namespace Classes
     {
         public GameObject CurrentAmmo;
         public static readonly Vector3 StartingPosition = new Vector3(0, 2f, 0);
-        public static GameObject Self;
+        public static GameObject Instance;
 
         private void Start()
         {
-            Self = gameObject;
+            Instance = gameObject;
         }
 
         public void Reset()
@@ -18,13 +18,11 @@ namespace Classes
             transform.localPosition = StartingPosition;
 
             var bird = transform.parent.GetComponent<Slingshot>().Refill();
-            if (bird != null)
-            {
-                var newBird = Instantiate(bird);
-                newBird.transform.parent = transform;
-                newBird.transform.localPosition = new Vector3(0, 0, 0);
-                CurrentAmmo = newBird;
-            }
+            if (bird == null) return;
+            var newBird = Instantiate(bird).transform;
+            newBird.parent = transform;
+            newBird.localPosition = new Vector3(0, 0, 0);
+            CurrentAmmo = newBird.gameObject;
         }
         
     }
