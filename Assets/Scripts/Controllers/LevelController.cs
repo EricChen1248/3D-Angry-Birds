@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using Classes;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Controllers
 {
@@ -12,6 +13,7 @@ namespace Controllers
     internal class LevelController : MonoBehaviour
     {
         private const string LevelDataFileName = "levels.json";
+        public Texture FilledStar;
 
         private int levelCount;
         private int unlockedLevels = 1;
@@ -24,6 +26,7 @@ namespace Controllers
         public void Start()
         {
             LoadLevels();
+            LoadGui();
         }
         /// <summary>
         /// Switches current scene to required level
@@ -35,7 +38,7 @@ namespace Controllers
             if (CurrentLevel == level) throw new LevelException(CurrentLevel, level);
 
             CurrentLevel = level;
-            SceneManager.LoadScene(string.Format("level{0:D2}", level));
+            SceneManager.LoadScene(string.Format("level{0}", level));
         }
 
         internal void LoadLevels()
@@ -54,12 +57,21 @@ namespace Controllers
 
             // Loading player 
             levelScore = new int[levelCount];
-            unlockedLevels = levelCount;
+            unlockedLevels = levelCount - 1;
             for (var i = 0; i < levelCount; i++)
             {
                 if (PlayerPrefs.HasKey("Hiscore" + i))
                 {
-                    levelScore[i] = PlayerPrefs.GetInt("Hiscore" + i);
+                    var score = PlayerPrefs.GetInt("Hiscore" + i);
+                    levelScore[i] = score;
+                    if (score >= levelScores[i + 1][1])
+                    {
+                        FillStars(i + 1, 3);
+                    }
+                    else if (score >= levelScores[i + 1][0])
+                    {
+                        FillStars(i + 1, 2);
+                    }
                 }
                 else
                 {
@@ -67,17 +79,30 @@ namespace Controllers
                     break;
                 }
             }
+
+            for (var i = 0; i <= unlockedLevels; i++)
+            {
+                transform.Find("LevelCanvas").Find((i + 1).ToString()).GetComponent<Button>().interactable = true;
+            }
         }
 
         public void LoadGui()
         {
-            
+            transform.Find("LevelCanvas").gameObject.SetActive(true);
         }
 
         public void UnloadGui()
         {
-            Debug.Log("Unloading Level Canvas");
-            Slingshot.Instance.transform.Find("LevelCanvas").gameObject.SetActive(false);
+            transform.Find("LevelCanvas").gameObject.SetActive(false);
+        }
+
+        private void FillStars(int level, int stars)
+        {
+            var images = transform.Find("LevelCanvas").Find(level.ToString()).Find("Stars");
+            for (var i = 0; i < stars; i++)
+            {
+                images.Find("Star" + i).GetComponent<RawImage>().texture = FilledStar;
+            }
         }
     }
 }
