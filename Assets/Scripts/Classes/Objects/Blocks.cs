@@ -17,7 +17,7 @@ namespace Classes.Objects
 
 	
         // Update is called once per frame
-        void Update () {
+        private void Update () {
             if (pendingBreak && pendingDestroy == false)
             {
                 pendingDestroy = true;
@@ -43,36 +43,34 @@ namespace Classes.Objects
             {
                 return;
             }
-            var block = Instantiate(this);
-            var blockScript = block.GetComponent<Blocks>();
-            blockScript.pendingBreak = true;
-            blockScript.impactRate = impactRate;
-            block.transform.parent = transform;
-            block.transform.localScale = new Vector3(1, 0.48f, 1);
-            block.transform.localPosition = new Vector3(0, block.transform.localScale.y, 0);
-            block.transform.localRotation = Quaternion.identity;
-            block.transform.parent = null;
-
-            block = Instantiate(this);
-            blockScript = block.GetComponent<Blocks>();
-            blockScript.pendingBreak = true;
-            blockScript.impactRate = impactRate;
-            block.transform.parent = transform;
-            block.transform.localScale = new Vector3(1, 0.48f, 1);
-            block.transform.localPosition = new Vector3(0, -block.transform.localScale.y, 0);
-            block.transform.localRotation = Quaternion.identity;
-            block.transform.parent = null;
+            
+            InstatiateChildBlock(0.49f);
+            InstatiateChildBlock(-0.49f);
 
             Destroy(gameObject);
 
+        }
+
+        private void InstatiateChildBlock(float position)
+        {
+            var block = Instantiate(this).transform;
+            var blockScript = block.GetComponent<Blocks>();
+            blockScript.impactRate = impactRate;
+            blockScript.pendingBreak = true;
+            block.parent = transform;
+            block.localScale = new Vector3(1, 0.48f, 1);
+            block.localPosition = new Vector3(0, position, 0);
+            block.localRotation = Quaternion.identity;
+            block.parent = null;
         }
 
         internal IEnumerator CoUpdate ()
         {
             pendingDestroy = true;
             pendingBreak = true;
-            yield return new WaitForSeconds(0.5f / impactRate);
+            yield return new WaitForSeconds(2f / impactRate);
             Destroy(gameObject);
         }
+        
     }
 }

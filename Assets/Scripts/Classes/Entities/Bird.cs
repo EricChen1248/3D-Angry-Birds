@@ -71,20 +71,20 @@ namespace Classes.Entities
             {
                 return;
             }
-            var curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 
-            var curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+            var curPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z)) 
+                                + offset - GameObject.FindGameObjectWithTag("Slingshot").transform.position;
 
-            // Making sure ammo can't go infront of slingshot
-            if ((curPosition - GameObject.FindGameObjectWithTag("Slingshot").transform.position +
-                 SlingshotPouch.StartingPosition).z <= 0)
-            {
-                curPosition.z = GameObject.FindGameObjectWithTag("Slingshot").transform.position.z +
-                                SlingshotPouch.StartingPosition.z;
-            }
-            SlingshotPouch.Self.transform.position = curPosition;
+            // Making sure ammo can't go infront or too far away from slingshot
+            curPosition.z = Mathf.Max(curPosition.z, 0);
+            curPosition.z = Mathf.Min(curPosition.z, 10);
+
+            curPosition.y = Mathf.Max(curPosition.y, -0.5f);
+
+            SlingshotPouch.Self.transform.localPosition = curPosition;
             SlingshotPouch.Self.transform.localPosition.Scale(new Vector3(0, 1, 1));
-            transform.position = SlingshotPouch.Self.transform.position;
+
+            transform.localPosition = Vector3.zero;
 
             var fpCamera = SlingshotPouch.Self.transform.parent.Find("Camera");
             var direction = SlingshotPouch.Self.transform.parent.transform.position + SlingshotPouch.StartingPosition -
@@ -117,6 +117,7 @@ namespace Classes.Entities
             var force = slingshot.position + SlingshotPouch.StartingPosition - transform.position;
             //var force = SlingshotPouch.StartingPosition - SlingshotPouch.Self.transform.localPosition;
             Rigidbody.AddForce(force * 30);
+            Rigidbody.velocity.Scale(new Vector3(1,3,1));
             SlingshotPouch.Self.transform.position = transform.position;
             if (SlingshotPouch.Self.transform.localPosition.z <= 0)
             {                
