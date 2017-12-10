@@ -22,7 +22,6 @@ namespace Controllers
 
         internal int CurrentLevel { get; private set; }
 
-
         public void Start()
         {
             LoadLevels();
@@ -34,7 +33,6 @@ namespace Controllers
         /// <param name="level"></param>
         public void SwitchLevel(int level)
         {
-
             if (CurrentLevel == level) throw new LevelException(CurrentLevel, level);
 
             CurrentLevel = level;
@@ -47,13 +45,13 @@ namespace Controllers
             var filePath = Path.Combine(Application.streamingAssetsPath, LevelDataFileName);
             var levelDataJSON = File.ReadAllLines(filePath);
             levelScores = new Dictionary<int, int[]>();
+            
             foreach (var lines in levelDataJSON)
             {
                 ++levelCount;
                 var levelData = JsonUtility.FromJson<LevelData>(lines);
                 levelScores.Add(levelData.Level, new []{levelData.TwoStar, levelData.ThreeStar});
             }
-
 
             // Loading player 
             levelScore = new int[levelCount];
