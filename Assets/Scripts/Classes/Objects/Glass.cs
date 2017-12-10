@@ -20,8 +20,8 @@ namespace Classes.Objects
                 Destroy(gameObject);
                 return;
             }
-
-            StartCoroutine(CoUpdate());
+            
+            Destroy(gameObject, 2f / impactRate);
         }
 
         private void GenerateSmallGlass(Vector3 size, int i)
