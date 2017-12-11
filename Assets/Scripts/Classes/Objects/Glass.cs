@@ -7,6 +7,7 @@ namespace Classes.Objects
     {
         private static readonly Vector3 Size = new Vector3(1, 0.3f, 1);
         private static readonly float[] Position = { Size.y + 0.05f, 0, -Size.y - 0.05f };
+        private const int BreakingScore = 200;
 
         protected override void Break()
         {
@@ -22,6 +23,7 @@ namespace Classes.Objects
             }
             
             Destroy(gameObject, 2f / ImpactRate);
+            Score.UpdateScore(200);
         }
 
         private void GenerateSmallGlass(Vector3 size, int i)

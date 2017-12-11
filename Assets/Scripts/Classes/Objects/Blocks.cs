@@ -6,6 +6,8 @@ namespace Classes.Objects
     {
 
         public float BreakThreshold = 3f;
+        public int BreakScore = 1000;
+
 
         protected float ImpactRate;
         protected bool ReactsToCollision = true;
@@ -36,6 +38,7 @@ namespace Classes.Objects
             InstatiateChildBlock(-0.49f);
 
             Destroy(gameObject);
+            Score.UpdateScore(BreakScore);
         }
 
         private void InstatiateChildBlock(float position)
@@ -50,5 +53,6 @@ namespace Classes.Objects
             block.parent = null;
             Destroy(block.gameObject, 2f / ImpactRate);
         }
+       
     }
 }
