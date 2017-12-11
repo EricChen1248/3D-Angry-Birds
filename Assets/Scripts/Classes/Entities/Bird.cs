@@ -12,7 +12,6 @@ namespace Classes.Entities
         private Vector3 Velocity
         {
             get { return Rigidbody.velocity; }
-            set { Rigidbody.velocity = value; }
         }
 
         // Use this for initialization

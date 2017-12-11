@@ -8,7 +8,7 @@ namespace Classes.Objects
         private static readonly Vector3 Size = new Vector3(1, 0.3f, 1);
         private static readonly float[] Position = { Size.y + 0.05f, 0, -Size.y - 0.05f };
 
-        public override void Break()
+        protected override void Break()
         {
             if (transform.localScale.y >= 3)
             {
@@ -21,7 +21,7 @@ namespace Classes.Objects
                 return;
             }
             
-            Destroy(gameObject, 2f / impactRate);
+            Destroy(gameObject, 2f / ImpactRate);
         }
 
         private void GenerateSmallGlass(Vector3 size, int i)

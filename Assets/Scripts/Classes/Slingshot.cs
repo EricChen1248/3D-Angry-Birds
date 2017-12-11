@@ -15,7 +15,7 @@ namespace Classes
 
 
         // Use this for initialization
-        internal void Start ()
+        private void Start ()
         {
             Instance = this;
             foreach (var bird in Birds)
@@ -26,7 +26,7 @@ namespace Classes
         }
 	
         // Update is called once per frame
-        internal void FixedUpdate ()
+        private void FixedUpdate ()
         {
             zoom += Input.GetAxisRaw("Zoom") / 5;
             Mathf.Clamp(zoom, 1, 15);

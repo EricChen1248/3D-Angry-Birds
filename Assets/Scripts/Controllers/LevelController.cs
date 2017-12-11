@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using System.IO;
 using Classes;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Controllers
@@ -10,7 +10,7 @@ namespace Controllers
     /// <summary>
     /// Handles all interactions for switching levels
     /// </summary>
-    internal class LevelController : MonoBehaviour
+    public class LevelController : MonoBehaviour
     {
         private const string LevelDataFileName = "levels.json";
         public Texture FilledStar;
@@ -22,16 +22,17 @@ namespace Controllers
 
         internal int CurrentLevel { get; private set; }
 
-        public void Start()
+        private void Start()
         {
             LoadLevels();
             LoadGui();
         }
+
         /// <summary>
         /// Switches current scene to required level
         /// </summary>
         /// <param name="level"></param>
-        public void SwitchLevel(int level)
+        internal void SwitchLevel(int level)
         {
             if (CurrentLevel == level) throw new LevelException(CurrentLevel, level);
 

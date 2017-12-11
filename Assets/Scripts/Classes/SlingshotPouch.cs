@@ -13,7 +13,7 @@ namespace Classes
             Instance = gameObject;
         }
 
-        public void Reset()
+        internal void Reset()
         {
             transform.localPosition = StartingPosition;
 

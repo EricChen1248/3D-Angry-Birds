@@ -6,7 +6,7 @@ namespace Controllers
     {
 
         // Use this for initialization
-        void Start()
+        public void Start()
         {
 
         }
