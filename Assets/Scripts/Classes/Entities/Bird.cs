@@ -8,7 +8,7 @@ namespace Classes.Entities
         public float Mass = 1f;        
 
         private Rigidbody Rigidbody { get; set; }
-
+        private int explodeTime = 200;
         private Vector3 Velocity
         {
             get { return Rigidbody.velocity; }
@@ -25,7 +25,7 @@ namespace Classes.Entities
         // Update is called once per frame
         private void FixedUpdate ()
         {
-            if (isShooting == false)
+            if (isShooting && isShot)
             {
                 Shoot();
             }
@@ -34,8 +34,30 @@ namespace Classes.Entities
             {
                Rigidbody.AddForce(-Physics.gravity * 0.6f);
             }
+
+            if (isShot == false)
+            {
+                if (Velocity.magnitude <= 0.3f)
+                {
+                    if (explodeTime <= 0)
+                    {
+                        StartShrink();
+                    }
+                    --explodeTime;
+                }
+            }
+        }
+
+        private void StartShrink()
+        {
+            gameObject.transform.localScale -= new Vector3(0.2f, 0.2f, 0.2f);
+            if (gameObject.transform.localScale.x < 0.1f)
+            {
+                Destroy(gameObject);
+            }
         }
         
+
         private void ReloadAmmo()
         {
             if (SlingshotPouch.Instance.GetComponent<SlingshotPouch>().CurrentAmmo != null)
@@ -48,12 +70,12 @@ namespace Classes.Entities
     
         private Vector3 screenPoint;
         private Vector3 offset;
-        private bool isShooting = true;
+        private bool isShooting = false;
+        private bool isShot = true;
 
         private void OnMouseDown()
         {
-            // No shooting in camera mode
-            if (isShooting == false)
+            if (isShooting)
             {
                 return;
             }
@@ -64,8 +86,7 @@ namespace Classes.Entities
 
         private void OnMouseDrag()
         {
-            // No shooting in camera mode
-            if (isShooting == false)
+            if (isShooting)
             {
                 return;
             }
@@ -95,7 +116,7 @@ namespace Classes.Entities
 
         private void OnMouseUp()
         {
-            isShooting = false;
+            isShooting = true;
             Rigidbody.useGravity = true;
         }
 
@@ -115,7 +136,7 @@ namespace Classes.Entities
                 transform.parent = null;
                 SlingshotPouch.Instance.GetComponent<SlingshotPouch>().CurrentAmmo = null;
                 ReloadAmmo();
-                isShooting = true;
+                isShot = false;
             }
         }
         
