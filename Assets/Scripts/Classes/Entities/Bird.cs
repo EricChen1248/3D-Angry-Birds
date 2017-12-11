@@ -8,6 +8,7 @@ namespace Classes.Entities
         public float Mass = 1f;        
 
         private Rigidbody Rigidbody { get; set; }
+
         private int explodeTime = 200;
         private Vector3 Velocity
         {
@@ -34,17 +35,13 @@ namespace Classes.Entities
                Rigidbody.AddForce(-Physics.gravity * 0.6f);
             }
 
-            if (isShot == false)
+            if (isShot) return;
+            if (!(Velocity.magnitude <= 0.3f)) return;
+            if (explodeTime <= 0)
             {
-                if (Velocity.magnitude <= 0.3f)
-                {
-                    if (explodeTime <= 0)
-                    {
-                        StartShrink();
-                    }
-                    --explodeTime;
-                }
+                StartShrink();
             }
+            --explodeTime;
         }
 
         private void StartShrink()
@@ -115,6 +112,11 @@ namespace Classes.Entities
 
         private void OnMouseUp()
         {
+            if ((SlingshotPouch.StartingPosition - SlingshotPouch.Instance.transform.localPosition).magnitude < 0.6f)
+            {
+                SlingshotPouch.Instance.transform.localPosition = SlingshotPouch.StartingPosition;
+                return;
+            }
             isShooting = true;
             Rigidbody.useGravity = true;
         }

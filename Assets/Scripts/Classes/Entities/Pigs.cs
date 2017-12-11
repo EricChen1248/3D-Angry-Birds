@@ -5,6 +5,7 @@ namespace Classes.Entities
     internal class Pigs : MonoBehaviour
     {
         public float BreakThreshold = 5f;
+        private const int BreakScore = 2000;
         
         // OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider
         public void OnCollisionEnter(Collision collision)
@@ -17,6 +18,7 @@ namespace Classes.Entities
         public virtual void Break()
         {
             Destroy(gameObject);
+            Score.UpdateScore(BreakScore);
         }
 
     }
