@@ -28,16 +28,14 @@ namespace Classes
         // Update is called once per frame
         private void FixedUpdate ()
         {
-            zoom += Input.GetAxisRaw("Zoom") / 5;
-            Mathf.Clamp(zoom, 1, 15);
+            zoom = Mathf.Clamp(zoom + Input.GetAxisRaw("Zoom") / 5, 2, 15);
+            
             var fpCamera = transform.Find("Camera").GetComponent<Camera>();
             fpCamera.fieldOfView = 75 * zoom / 10;
 
             var rotation = Input.GetAxisRaw("Spin") * RotationSpeed * zoom / 10;
             transform.Rotate(new Vector3(0, rotation, 0));
-
-
-
+            
             // Handles Drawing the slingshot line
             var lineRenderer = GetComponent<LineRenderer>();
 
