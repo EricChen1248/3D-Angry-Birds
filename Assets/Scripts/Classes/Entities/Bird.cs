@@ -88,16 +88,17 @@ namespace Classes.Entities
             }
 
             var curPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z)) 
-                                + offset - GameObject.FindGameObjectWithTag("Slingshot").transform.position;
+                                + offset;
 
-            // Making sure ammo can't go infront or too far away from slingshot
-            curPosition.z = Mathf.Max(curPosition.z, 0);
-            curPosition.z = Mathf.Min(curPosition.z, 10);
+            SlingshotPouch.Instance.transform.position = curPosition;
 
-            curPosition.y = Mathf.Max(curPosition.y, -0.5f);
-            curPosition.Scale(new Vector3(0, 1, 1));
+            // Clamping slingshot boundaries
+            var locPos = SlingshotPouch.Instance.transform.localPosition;
+            locPos.z = Mathf.Min(Mathf.Max(locPos.z, 0), 10);
+            locPos.y = Mathf.Max(locPos.y, -0.5f);
+            locPos.x = 0;
+            SlingshotPouch.Instance.transform.localPosition = locPos;
 
-            SlingshotPouch.Instance.transform.localPosition = curPosition;
             transform.localPosition = Vector3.zero;
 
             var fpCamera = SlingshotPouch.Instance.transform.parent.Find("Camera");
@@ -117,7 +118,8 @@ namespace Classes.Entities
                 SlingshotPouch.Instance.transform.localPosition = SlingshotPouch.StartingPosition;
                 return;
             }
-            SlingshotPouch.Instance.transform.parent.Find("Camera").rotation = Quaternion.LookRotation(new Vector3(0,0,-90));
+            SlingshotPouch.Instance.transform.parent.Find("Camera").rotation = 
+                Quaternion.LookRotation(SlingshotPouch.Instance.transform.parent.transform.position + SlingshotPouch.StartingPosition - transform.position);
             isShooting = true;
             Rigidbody.useGravity = true;
         }
