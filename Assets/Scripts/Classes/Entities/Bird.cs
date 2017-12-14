@@ -117,6 +117,7 @@ namespace Classes.Entities
                 SlingshotPouch.Instance.transform.localPosition = SlingshotPouch.StartingPosition;
                 return;
             }
+            SlingshotPouch.Instance.transform.parent.Find("Camera").rotation = Quaternion.LookRotation(new Vector3(0,0,-90));
             isShooting = true;
             Rigidbody.useGravity = true;
         }
