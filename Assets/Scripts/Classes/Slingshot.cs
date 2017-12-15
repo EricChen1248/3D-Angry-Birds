@@ -10,16 +10,18 @@ namespace Classes
         public const float RotationSpeed = 2f;
         public GameObject[] Birds;
         public GameObject Pouch;
-        private readonly Queue<GameObject> birdsList = new Queue<GameObject>();
+        internal readonly Queue<GameObject> birdsList = new Queue<GameObject>();
         private float zoom = 10f;
 
 
         // Use this for initialization
         private void Start ()
         {
+            Debug.Log("Slingshot Start");
             Instance = this;
             foreach (var bird in Birds)
             {
+                Debug.Log(bird.name);
                 birdsList.Enqueue(bird);
             }
             SlingshotPouch.Instance.GetComponent<SlingshotPouch>().Reset();

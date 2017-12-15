@@ -5,7 +5,8 @@ namespace Classes.Entities
     public class Bird: MonoBehaviour
     {
         public Vector3 Speed = new Vector3(10,10,10);
-        public float Mass = 1f;        
+        public float Mass = 1f;
+        public int Score = 10000;
 
         protected Rigidbody Rigidbody { get; set; }
 
@@ -69,9 +70,10 @@ namespace Classes.Entities
 
 #region Shooting and Aiming
     
+        public bool IsShooting;
+
         protected Vector3 ScreenPoint;
         protected Vector3 Offset;
-        protected bool IsShooting = false;
         protected bool IsShot = true;
 
         protected void OnMouseDown()

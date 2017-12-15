@@ -7,7 +7,7 @@ namespace Classes
     {
         public static Score Instance;
 
-        private int score;
+        internal int CurrentScore;
         private int targetScore;
 
         /// <summary>
@@ -29,13 +29,13 @@ namespace Classes
 
         private void UpdateGUI()
         {
-            if (score >= targetScore) return;
-            score += Mathf.Max((targetScore - score) / 10, 10);
-            if (score >= targetScore)
+            if (CurrentScore >= targetScore) return;
+            CurrentScore += Mathf.Max((targetScore - CurrentScore) / 10, 10);
+            if (CurrentScore >= targetScore)
             {
-                score = targetScore;
+                CurrentScore = targetScore;
             }
-            Instance.gameObject.GetComponent<Text>().text = string.Format("{0:D}", score);
+            Instance.gameObject.GetComponent<Text>().text = string.Format("{0:D}", CurrentScore);
         }
 
         /// <summary>
