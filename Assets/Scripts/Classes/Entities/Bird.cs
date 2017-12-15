@@ -7,44 +7,49 @@ namespace Classes.Entities
         public Vector3 Speed = new Vector3(10,10,10);
         public float Mass = 1f;        
 
-        private Rigidbody Rigidbody { get; set; }
+        protected Rigidbody Rigidbody { get; set; }
 
-        private int explodeTime = 200;
-        private Vector3 Velocity
+        protected int ExplodeTime = 200;
+        protected Vector3 Velocity
         {
             get { return Rigidbody.velocity; }
         }
 
         // Use this for initialization
-        private void Start ()
+        protected void Start ()
         {
             Rigidbody = GetComponent<Rigidbody>();
             Rigidbody.mass = Mass;
         }
 	
         // Update is called once per frame
-        private void FixedUpdate ()
+        protected virtual void FixedUpdate ()
         {
-            if (isShooting && isShot)
+            FixedUpdateFunctions();
+        }
+
+        protected void FixedUpdateFunctions()
+        {
+            if (IsShooting && IsShot)
             {
                 Shoot();
             }
 
             if (Rigidbody.useGravity)
             {
-               Rigidbody.AddForce(-Physics.gravity * 0.6f);
+                Rigidbody.AddForce(-Physics.gravity * 0.6f);
             }
 
-            if (isShot) return;
+            if (IsShot) return;
             if (!(Velocity.magnitude <= 0.3f)) return;
-            if (explodeTime <= 0)
+            if (ExplodeTime <= 0)
             {
                 StartShrink();
             }
-            --explodeTime;
+            --ExplodeTime;
         }
 
-        private void StartShrink()
+        protected void StartShrink()
         {
             gameObject.transform.localScale -= new Vector3(0.2f, 0.2f, 0.2f);
             if (gameObject.transform.localScale.x < 0.1f)
@@ -54,7 +59,7 @@ namespace Classes.Entities
         }
         
 
-        private void ReloadAmmo()
+        protected void ReloadAmmo()
         {
             if (SlingshotPouch.Instance.GetComponent<SlingshotPouch>().CurrentAmmo != null)
                 return;
@@ -64,31 +69,31 @@ namespace Classes.Entities
 
 #region Shooting and Aiming
     
-        private Vector3 screenPoint;
-        private Vector3 offset;
-        private bool isShooting = false;
-        private bool isShot = true;
+        protected Vector3 ScreenPoint;
+        protected Vector3 Offset;
+        protected bool IsShooting = false;
+        protected bool IsShot = true;
 
-        private void OnMouseDown()
+        protected void OnMouseDown()
         {
-            if (isShooting)
+            if (IsShooting)
             {
                 return;
             }
-            screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-            offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+            ScreenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+            Offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, ScreenPoint.z));
 
         }
 
-        private void OnMouseDrag()
+        protected void OnMouseDrag()
         {
-            if (isShooting)
+            if (IsShooting)
             {
                 return;
             }
 
-            var curPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z)) 
-                                + offset;
+            var curPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, ScreenPoint.z)) 
+                                + Offset;
 
             SlingshotPouch.Instance.transform.position = curPosition;
 
@@ -111,7 +116,7 @@ namespace Classes.Entities
             }
         }
 
-        private void OnMouseUp()
+        protected void OnMouseUp()
         {
             if ((SlingshotPouch.StartingPosition - SlingshotPouch.Instance.transform.localPosition).magnitude < 0.6f)
             {
@@ -120,12 +125,12 @@ namespace Classes.Entities
             }
             SlingshotPouch.Instance.transform.parent.Find("Camera").rotation = 
                 Quaternion.LookRotation(SlingshotPouch.Instance.transform.parent.transform.position + SlingshotPouch.StartingPosition - transform.position);
-            isShooting = true;
+            IsShooting = true;
             Rigidbody.useGravity = true;
         }
 
         // Starts shooting process of bird;
-        private void Shoot()
+        protected void Shoot()
         {
             var slingshot = SlingshotPouch.Instance.transform.parent.transform;
             var force = slingshot.position + SlingshotPouch.StartingPosition - transform.position;
@@ -140,7 +145,7 @@ namespace Classes.Entities
                 transform.parent = null;
                 SlingshotPouch.Instance.GetComponent<SlingshotPouch>().CurrentAmmo = null;
                 ReloadAmmo();
-                isShot = false;
+                IsShot = false;
             }
         }
         

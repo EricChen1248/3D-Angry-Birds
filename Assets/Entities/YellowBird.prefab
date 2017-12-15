@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 33429645626808554}
   - component: {fileID: 54348746562651008}
   - component: {fileID: 135836982400292482}
-  - component: {fileID: 114113531701337004}
+  - component: {fileID: 114034296868389568}
   m_Layer: 0
-  m_Name: Bird
+  m_Name: YellowBird
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1384069679855638}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 10.806942, y: 0.50000006, z: 1.5659688}
+  m_LocalPosition: {x: 6.0298853, y: 0.50000006, z: 4.8702116}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4720913140538396}
@@ -88,7 +88,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0cc4e99fc46df15448f0226af49b6d75, type: 2}
+  - {fileID: 2100000, guid: eccbbc8de5d4b16408a7139038e168df, type: 2}
   - {fileID: 2100000, guid: 5fad061c89e93644092c5c366a61b03e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -138,7 +138,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114113531701337004
+--- !u!114 &114034296868389568
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -146,10 +146,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1384069679855638}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3895efc0cd2781b4583b642546ea7c80, type: 3}
+  m_Script: {fileID: 11500000, guid: 722a847ecabf16f4bb88e495f2c21c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: {x: 1, y: 0, z: 0}
+  Speed: {x: 10, y: 10, z: 10}
   Mass: 1
 --- !u!135 &135836982400292482
 SphereCollider:
