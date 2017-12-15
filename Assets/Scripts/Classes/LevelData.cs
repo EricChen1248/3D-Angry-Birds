@@ -9,6 +9,7 @@ namespace Classes
         public int Level;
         public int TwoStar;
         public int ThreeStar;
+        public int Pigs;
 
         public static LevelData CreateFromJSON(string jsonString)
         {
