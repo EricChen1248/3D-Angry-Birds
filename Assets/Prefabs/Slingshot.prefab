@@ -163,7 +163,6 @@ GameObject:
   - component: {fileID: 4961741083387308}
   - component: {fileID: 33460133081903534}
   - component: {fileID: 23884800962334966}
-  - component: {fileID: 95666105689767740}
   m_Layer: 0
   m_Name: Branch
   m_TagString: Untagged
@@ -198,7 +197,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1414634906354288}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 16.96, y: 1.91, z: -10.3}
+  m_LocalPosition: {x: 23.94, y: 1.91, z: -10.09}
   m_LocalScale: {x: 1.333334, y: 1.3333334, z: 1.333334}
   m_Children: []
   m_Father: {fileID: 4953170884245614}
@@ -237,7 +236,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1529827938174194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.51, y: 1.45, z: 8.14}
+  m_LocalPosition: {x: 0.51, y: 1.37, z: 8.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4961741083387308}
@@ -430,23 +429,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1414634906354288}
   m_Enabled: 1
---- !u!95 &95666105689767740
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1866679224471836}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b54a8a336a87c074e98d562a5d9c2114, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114019835259695450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -608,12 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73bc52ff301b26341b16f75f798ffa43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Birds:
-  - {fileID: 1384069679855638, guid: b27aa19473a6d6346b011bcb1c6be1b9, type: 2}
-  - {fileID: 1384069679855638, guid: b27aa19473a6d6346b011bcb1c6be1b9, type: 2}
-  - {fileID: 1384069679855638, guid: b27aa19473a6d6346b011bcb1c6be1b9, type: 2}
-  - {fileID: 1384069679855638, guid: b27aa19473a6d6346b011bcb1c6be1b9, type: 2}
-  - {fileID: 1384069679855638, guid: b27aa19473a6d6346b011bcb1c6be1b9, type: 2}
+  Birds: []
   Pouch: {fileID: 1167107465405896}
 --- !u!114 &114785574437996444
 MonoBehaviour:
