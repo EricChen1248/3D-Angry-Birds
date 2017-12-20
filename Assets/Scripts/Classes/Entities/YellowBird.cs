@@ -15,7 +15,6 @@ namespace Classes.Entities
 
             if (!AbilityUsed && Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log(Velocity);
                 Rigidbody.AddForce(Velocity.normalized * 1000);
                 AbilityUsed = true;
             }

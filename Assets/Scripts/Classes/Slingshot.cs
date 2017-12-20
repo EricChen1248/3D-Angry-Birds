@@ -17,11 +17,9 @@ namespace Classes
         // Use this for initialization
         private void Start ()
         {
-            Debug.Log("Slingshot Start");
             Instance = this;
             foreach (var bird in Birds)
             {
-                Debug.Log(bird.name);
                 birdsList.Enqueue(bird);
             }
             SlingshotPouch.Instance.GetComponent<SlingshotPouch>().Reset();

@@ -8,7 +8,6 @@ namespace Classes.Objects
         public float BreakThreshold = 3f;
         public int BreakScore = 1000;
 
-
         protected float ImpactRate;
         protected bool ReactsToCollision = true;
 	
@@ -24,9 +23,10 @@ namespace Classes.Objects
         {
             if (ReactsToCollision == false)
                 return;
-                
+            
             var impact = collision.relativeVelocity.magnitude * collision.gameObject.GetComponent<Rigidbody>().mass;
             if (!(impact > BreakThreshold)) return;
+            ReactsToCollision = false;
             ImpactRate = impact / BreakThreshold;
             Break();
         }
