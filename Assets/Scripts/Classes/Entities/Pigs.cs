@@ -18,9 +18,9 @@ namespace Classes.Entities
 
         public virtual void Break()
         {
-            LevelController.Instance.KillPig();
-            Score.UpdateScore(BreakScore);
             Destroy(gameObject);
+            Score.UpdateScore(BreakScore);
+            LevelController.Instance.KillPig();
         }
 
     }

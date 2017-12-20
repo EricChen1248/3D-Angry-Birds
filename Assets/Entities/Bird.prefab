@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1384069679855638}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 10.806942, y: 0.50000006, z: 1.5659688}
+  m_LocalPosition: {x: 5.6662135, y: 0.50000006, z: 3.4718866}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4720913140538396}
@@ -151,6 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: {x: 1, y: 0, z: 0}
   Mass: 1
+  Score: 10000
+  IsShooting: 0
 --- !u!135 &135836982400292482
 SphereCollider:
   m_ObjectHideFlags: 1
