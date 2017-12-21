@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Controllers;
+using UnityEngine;
 
 namespace Classes.Entities
 {
@@ -19,6 +20,7 @@ namespace Classes.Entities
         {
             Destroy(gameObject);
             Score.UpdateScore(BreakScore);
+            LevelController.Instance.KillPig();
         }
 
     }

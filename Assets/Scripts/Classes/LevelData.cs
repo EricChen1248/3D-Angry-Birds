@@ -4,13 +4,14 @@ using UnityEngine;
 namespace Classes
 {
     [Serializable]
-    internal class LevelData
+    public class LevelData
     {
-        internal int Level;
-        internal int TwoStar;
-        internal int ThreeStar;
+        public int Level;
+        public int TwoStar;
+        public int ThreeStar;
+        public int Pigs;
 
-        internal static LevelData CreateFromJSON(string jsonString)
+        public static LevelData CreateFromJSON(string jsonString)
         {
             return JsonUtility.FromJson<LevelData>(jsonString);
         }

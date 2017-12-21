@@ -10,7 +10,7 @@ namespace Classes
         public const float RotationSpeed = 2f;
         public GameObject[] Birds;
         public GameObject Pouch;
-        private readonly Queue<GameObject> birdsList = new Queue<GameObject>();
+        internal readonly Queue<GameObject> birdsList = new Queue<GameObject>();
         private float zoom = 10f;
 
 

@@ -5,46 +5,52 @@ namespace Classes.Entities
     public class Bird: MonoBehaviour
     {
         public Vector3 Speed = new Vector3(10,10,10);
-        public float Mass = 1f;        
+        public float Mass = 1f;
+        public int Score = 10000;
 
-        private Rigidbody Rigidbody { get; set; }
+        protected Rigidbody Rigidbody { get; set; }
 
-        private int explodeTime = 200;
-        private Vector3 Velocity
+        protected int ExplodeTime = 200;
+        protected Vector3 Velocity
         {
             get { return Rigidbody.velocity; }
         }
 
         // Use this for initialization
-        private void Start ()
+        protected void Start ()
         {
             Rigidbody = GetComponent<Rigidbody>();
             Rigidbody.mass = Mass;
         }
 	
         // Update is called once per frame
-        private void FixedUpdate ()
+        protected virtual void FixedUpdate ()
         {
-            if (isShooting && isShot)
+            FixedUpdateFunctions();
+        }
+
+        protected void FixedUpdateFunctions()
+        {
+            if (IsShooting && IsShot)
             {
                 Shoot();
             }
 
             if (Rigidbody.useGravity)
             {
-               Rigidbody.AddForce(-Physics.gravity * 0.6f);
+                Rigidbody.AddForce(-Physics.gravity * 0.6f);
             }
 
-            if (isShot) return;
+            if (IsShot) return;
             if (!(Velocity.magnitude <= 0.3f)) return;
-            if (explodeTime <= 0)
+            if (ExplodeTime <= 0)
             {
                 StartShrink();
             }
-            --explodeTime;
+            --ExplodeTime;
         }
 
-        private void StartShrink()
+        protected void StartShrink()
         {
             gameObject.transform.localScale -= new Vector3(0.2f, 0.2f, 0.2f);
             if (gameObject.transform.localScale.x < 0.1f)
@@ -54,7 +60,7 @@ namespace Classes.Entities
         }
         
 
-        private void ReloadAmmo()
+        protected void ReloadAmmo()
         {
             if (SlingshotPouch.Instance.GetComponent<SlingshotPouch>().CurrentAmmo != null)
                 return;
@@ -64,40 +70,42 @@ namespace Classes.Entities
 
 #region Shooting and Aiming
     
-        private Vector3 screenPoint;
-        private Vector3 offset;
-        private bool isShooting = false;
-        private bool isShot = true;
+        public bool IsShooting;
 
-        private void OnMouseDown()
+        protected Vector3 ScreenPoint;
+        protected Vector3 Offset;
+        protected bool IsShot = true;
+
+        protected void OnMouseDown()
         {
-            if (isShooting)
+            if (IsShooting)
             {
                 return;
             }
-            screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-            offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+            ScreenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+            Offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, ScreenPoint.z));
 
         }
 
-        private void OnMouseDrag()
+        protected void OnMouseDrag()
         {
-            if (isShooting)
+            if (IsShooting)
             {
                 return;
             }
 
-            var curPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z)) 
-                                + offset - GameObject.FindGameObjectWithTag("Slingshot").transform.position;
+            var curPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, ScreenPoint.z)) 
+                                + Offset;
 
-            // Making sure ammo can't go infront or too far away from slingshot
-            curPosition.z = Mathf.Max(curPosition.z, 0);
-            curPosition.z = Mathf.Min(curPosition.z, 10);
+            SlingshotPouch.Instance.transform.position = curPosition;
 
-            curPosition.y = Mathf.Max(curPosition.y, -0.5f);
-            curPosition.Scale(new Vector3(0, 1, 1));
+            // Clamping slingshot boundaries
+            var locPos = SlingshotPouch.Instance.transform.localPosition;
+            locPos.z = Mathf.Min(Mathf.Max(locPos.z, 0), 10);
+            locPos.y = Mathf.Max(locPos.y, -0.5f);
+            locPos.x = 0;
+            SlingshotPouch.Instance.transform.localPosition = locPos;
 
-            SlingshotPouch.Instance.transform.localPosition = curPosition;
             transform.localPosition = Vector3.zero;
 
             var fpCamera = SlingshotPouch.Instance.transform.parent.Find("Camera");
@@ -110,19 +118,21 @@ namespace Classes.Entities
             }
         }
 
-        private void OnMouseUp()
+        protected void OnMouseUp()
         {
             if ((SlingshotPouch.StartingPosition - SlingshotPouch.Instance.transform.localPosition).magnitude < 0.6f)
             {
                 SlingshotPouch.Instance.transform.localPosition = SlingshotPouch.StartingPosition;
                 return;
             }
-            isShooting = true;
+            SlingshotPouch.Instance.transform.parent.Find("Camera").rotation = 
+                Quaternion.LookRotation(SlingshotPouch.Instance.transform.parent.transform.position + SlingshotPouch.StartingPosition - transform.position);
+            IsShooting = true;
             Rigidbody.useGravity = true;
         }
 
         // Starts shooting process of bird;
-        private void Shoot()
+        protected void Shoot()
         {
             var slingshot = SlingshotPouch.Instance.transform.parent.transform;
             var force = slingshot.position + SlingshotPouch.StartingPosition - transform.position;
@@ -137,7 +147,7 @@ namespace Classes.Entities
                 transform.parent = null;
                 SlingshotPouch.Instance.GetComponent<SlingshotPouch>().CurrentAmmo = null;
                 ReloadAmmo();
-                isShot = false;
+                IsShot = false;
             }
         }
         
