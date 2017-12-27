@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114152264819540200}
   m_Layer: 0
   m_Name: Pouch
-  m_TagString: Untagged
+  m_TagString: Slingshot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236,7 +236,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1529827938174194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.51, y: 1.37, z: 8.14}
+  m_LocalPosition: {x: 0.51, y: 1.45, z: 8.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4961741083387308}
@@ -590,7 +590,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73bc52ff301b26341b16f75f798ffa43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Birds: []
+  Birds:
+  - {fileID: 1271138362984500, guid: ab90f61e77e9c5146bf1011733575cfb, type: 2}
+  - {fileID: 1271138362984500, guid: ab90f61e77e9c5146bf1011733575cfb, type: 2}
+  - {fileID: 1271138362984500, guid: ab90f61e77e9c5146bf1011733575cfb, type: 2}
   Pouch: {fileID: 1167107465405896}
 --- !u!114 &114785574437996444
 MonoBehaviour:

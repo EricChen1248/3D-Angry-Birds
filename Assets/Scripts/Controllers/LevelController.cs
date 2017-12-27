@@ -20,7 +20,7 @@ namespace Controllers
         private const string LevelDataFileName = "levels.json";
         public Texture FilledStar;
 
-        private int pigsCount;
+        public int pigsCount;
         private bool gameEndInitiated;
 
         private int levelCount;
