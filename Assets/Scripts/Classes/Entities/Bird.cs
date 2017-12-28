@@ -16,6 +16,11 @@ namespace Classes.Entities
             get { return Rigidbody.velocity; }
         }
 
+        protected Vector3 Position
+        {
+            get { return transform.position; }
+        }
+
         // Use this for initialization
         protected void Start ()
         {
@@ -135,7 +140,7 @@ namespace Classes.Entities
         protected void Shoot()
         {
             var slingshot = SlingshotPouch.Instance.transform.parent.transform;
-            var force = slingshot.position + SlingshotPouch.StartingPosition - transform.position;
+            var force = (slingshot.position + SlingshotPouch.StartingPosition - Position) * GetComponent<Rigidbody>().mass;
            
             Rigidbody.AddForce(force * 30);
             Velocity.Scale(new Vector3(1, 3, 1));
