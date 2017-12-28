@@ -11,8 +11,6 @@ namespace Classes.Objects
         {
             get { return transform.position; }
         }
-        
-    
 
         // OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider
         private void OnCollisionEnter(Collision collision)
@@ -26,10 +24,9 @@ namespace Classes.Objects
             ImpactRate = impact / BreakThreshold;
             Break();
         }
-        
 
         protected override void Break()
-        {            
+        {
             Destroy(gameObject);
             for (var i = 0; i < 1000; i++)
             {
@@ -39,9 +36,8 @@ namespace Classes.Objects
                 fragment.GetComponent<Rigidbody>().AddForce((fragment.transform.position - Position), ForceMode.Impulse);
                 fragment.GetComponent<ExplosionFragment>().ParentBarrelPosition = Position;
             }
+
             Score.UpdateScore(BreakScore);
         }
-        
-       
     }
 }
