@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BreakThreshold: 5
+  BreakScore: 5000
 --- !u!136 &136828517799098892
 CapsuleCollider:
   m_ObjectHideFlags: 1
