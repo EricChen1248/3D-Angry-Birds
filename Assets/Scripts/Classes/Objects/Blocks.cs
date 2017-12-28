@@ -23,14 +23,12 @@ namespace Classes.Objects
         {
             if (ReactsToCollision == false)
                 return;
-            
             var impact = collision.relativeVelocity.magnitude * collision.gameObject.GetComponent<Rigidbody>().mass;
             if (!(impact > BreakThreshold)) return;
             ReactsToCollision = false;
             ImpactRate = impact / BreakThreshold;
             Break();
         }
-
 
         protected virtual void Break()
         {            

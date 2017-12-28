@@ -28,16 +28,9 @@ namespace Classes.Objects
         protected override void Break()
         {
             Destroy(gameObject);
-            for (var i = 0; i < 1000; i++)
-            {
-                var fragment = Instantiate(ExplosionFragment);
-                fragment.transform.position = Position;
-                fragment.transform.position += new Vector3(random.Next(-10,10) / 10f, random.Next(-10,10) / 10f, random.Next(0, 10) / 10f);
-                fragment.GetComponent<Rigidbody>().AddForce((fragment.transform.position - Position), ForceMode.Impulse);
-                fragment.GetComponent<ExplosionFragment>().ParentBarrelPosition = Position;
-            }
-
+            Helper.GenerateExplosion(Position);
             Score.UpdateScore(BreakScore);
         }
+        
     }
 }
