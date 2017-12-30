@@ -19,7 +19,7 @@ namespace Classes.Entities
         {
             FixedUpdateFunctions();
 
-            if (AbilityUsed || !Input.GetKeyDown(KeyCode.Space)) return;
+            if (AbilityUsed || !Input.GetKeyDown(KeyCode.Space) || transform.parent != null) return;
             Destroy(gameObject);
             Helper.GenerateExplosion(Position);
             

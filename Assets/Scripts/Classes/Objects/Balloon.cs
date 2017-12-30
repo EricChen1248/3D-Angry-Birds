@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Classes.Objects
 {
@@ -21,9 +22,22 @@ namespace Classes.Objects
         }
         protected override void Break()
         {
+            if (ObjectToLift == null)
+            {
+                return;
+            }
+
             ObjectToLift.GetComponent<Rigidbody>().isKinematic = false;
             ObjectToLift.transform.parent = null;
             Destroy(gameObject);
+        }
+
+        private void FixedUpdate()
+        {
+            if (ObjectToLift == null)
+            {
+                transform.position += new Vector3(0, 0.1f, 0);
+            }
         }
     }
 }

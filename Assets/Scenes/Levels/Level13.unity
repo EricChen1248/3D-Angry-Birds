@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -212,6 +212,11 @@ Prefab:
     - target: {fileID: 1436084349906356, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
       propertyPath: m_Name
       value: Pig (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 54570930339073768, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
@@ -652,6 +657,11 @@ Prefab:
     - target: {fileID: 4179920796429254, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 54570930339073768, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
@@ -1204,12 +1214,12 @@ Prefab:
     - target: {fileID: 224952198442000842, guid: 2a6a582021565da4c9f41cff6d77187f,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 517.49
+      value: 566.49
       objectReference: {fileID: 0}
     - target: {fileID: 224952198442000842, guid: 2a6a582021565da4c9f41cff6d77187f,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 201.13
+      value: 317.63
       objectReference: {fileID: 0}
     - target: {fileID: 1529827938174194, guid: 2a6a582021565da4c9f41cff6d77187f, type: 2}
       propertyPath: m_Name
@@ -1235,7 +1245,7 @@ Prefab:
         type: 2}
       propertyPath: Birds.Array.data[0]
       value: 
-      objectReference: {fileID: 1088733147112998, guid: b32c8714fbb43c640923367f3fa59e79,
+      objectReference: {fileID: 1384069679855638, guid: b32c8714fbb43c640923367f3fa59e79,
         type: 2}
     - target: {fileID: 114754189661957906, guid: 2a6a582021565da4c9f41cff6d77187f,
         type: 2}
@@ -1247,7 +1257,7 @@ Prefab:
         type: 2}
       propertyPath: Birds.Array.data[2]
       value: 
-      objectReference: {fileID: 1088733147112998, guid: b32c8714fbb43c640923367f3fa59e79,
+      objectReference: {fileID: 1384069679855638, guid: b32c8714fbb43c640923367f3fa59e79,
         type: 2}
     - target: {fileID: 114754189661957906, guid: 2a6a582021565da4c9f41cff6d77187f,
         type: 2}
@@ -1417,11 +1427,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4119761239957472, guid: 2a6a582021565da4c9f41cff6d77187f, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -10.09
+      value: -13.32
       objectReference: {fileID: 0}
     - target: {fileID: 4119761239957472, guid: 2a6a582021565da4c9f41cff6d77187f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 23.94
+      value: 25.8
       objectReference: {fileID: 0}
     - target: {fileID: 224257846848235272, guid: 2a6a582021565da4c9f41cff6d77187f,
         type: 2}
@@ -1432,6 +1442,10 @@ Prefab:
         type: 2}
       propertyPath: m_LocalPosition.y
       value: 163.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119761239957472, guid: 2a6a582021565da4c9f41cff6d77187f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a6a582021565da4c9f41cff6d77187f, type: 2}
@@ -1541,6 +1555,11 @@ Prefab:
       propertyPath: m_Name
       value: Pig (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 54570930339073768, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
   m_IsPrefabParent: 0
@@ -1586,6 +1605,11 @@ Prefab:
     - target: {fileID: 1436084349906356, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
       propertyPath: m_Name
       value: Pig (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 54570930339073768, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
@@ -1790,6 +1814,11 @@ Prefab:
     - target: {fileID: 1436084349906356, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
       propertyPath: m_Name
       value: Pig (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 54570930339073768, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -875,12 +875,12 @@ Prefab:
     - target: {fileID: 224952198442000842, guid: 2a6a582021565da4c9f41cff6d77187f,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 517.49
+      value: 566.49
       objectReference: {fileID: 0}
     - target: {fileID: 224952198442000842, guid: 2a6a582021565da4c9f41cff6d77187f,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 201.13
+      value: 317.63
       objectReference: {fileID: 0}
     - target: {fileID: 1529827938174194, guid: 2a6a582021565da4c9f41cff6d77187f, type: 2}
       propertyPath: m_Name
@@ -1088,11 +1088,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4119761239957472, guid: 2a6a582021565da4c9f41cff6d77187f, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -10.09
+      value: -18.28
       objectReference: {fileID: 0}
     - target: {fileID: 4119761239957472, guid: 2a6a582021565da4c9f41cff6d77187f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 23.94
+      value: 28.76
       objectReference: {fileID: 0}
     - target: {fileID: 224257846848235272, guid: 2a6a582021565da4c9f41cff6d77187f,
         type: 2}
@@ -1103,6 +1103,10 @@ Prefab:
         type: 2}
       propertyPath: m_LocalPosition.y
       value: 163.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119761239957472, guid: 2a6a582021565da4c9f41cff6d77187f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.74
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a6a582021565da4c9f41cff6d77187f, type: 2}
@@ -1196,6 +1200,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 54570930339073768, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
   m_IsPrefabParent: 0
@@ -1241,6 +1250,11 @@ Prefab:
     - target: {fileID: 1436084349906356, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
       propertyPath: m_Name
       value: Pig (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 54570930339073768, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}

@@ -1,4 +1,5 @@
-﻿using Classes.Objects;
+﻿using Classes.Entities;
+using Classes.Objects;
 using UnityEngine;
 
 namespace Classes
@@ -17,6 +18,11 @@ namespace Classes
             var colliders = Physics.OverlapSphere(position, 20);
             foreach (var hit in colliders)
             {
+                if (hit.GetComponent<Bird>() != null)
+                {
+                    continue;
+                }
+
                 var rb = hit.GetComponent<Rigidbody>();
 
                 if (rb != null)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -112,6 +112,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &14718069 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1436084349906356, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+    type: 2}
+  m_PrefabInternal: {fileID: 1310050930}
 --- !u!4 &79422524 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4432614813061278, guid: 2c89cbcbeb58ff24f8f5af242d754cd2,
@@ -155,6 +160,11 @@ Prefab:
     - target: {fileID: 4179920796429254, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54570930339073768, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
@@ -259,6 +269,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e81805fbe43ed064d869943efb2c9c87, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &227000032 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1436084349906356, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+    type: 2}
+  m_PrefabInternal: {fileID: 422412971}
 --- !u!1001 &357885220
 Prefab:
   m_ObjectHideFlags: 0
@@ -356,6 +371,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 54570930339073768, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
   m_IsPrefabParent: 0
@@ -397,6 +417,11 @@ Prefab:
     - target: {fileID: 4179920796429254, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54570930339073768, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
@@ -444,8 +469,7 @@ Prefab:
         type: 2}
       propertyPath: ObjectToLift
       value: 
-      objectReference: {fileID: 1436084349906356, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
-        type: 2}
+      objectReference: {fileID: 227000032}
     - target: {fileID: 1549675718752888, guid: 2c89cbcbeb58ff24f8f5af242d754cd2, type: 2}
       propertyPath: m_Name
       value: Balloon (2)
@@ -608,8 +632,7 @@ Prefab:
         type: 2}
       propertyPath: ObjectToLift
       value: 
-      objectReference: {fileID: 1436084349906356, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
-        type: 2}
+      objectReference: {fileID: 1402467203}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c89cbcbeb58ff24f8f5af242d754cd2, type: 2}
   m_IsPrefabParent: 0
@@ -656,8 +679,7 @@ Prefab:
         type: 2}
       propertyPath: ObjectToLift
       value: 
-      objectReference: {fileID: 1436084349906356, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
-        type: 2}
+      objectReference: {fileID: 1378554964}
     - target: {fileID: 1549675718752888, guid: 2c89cbcbeb58ff24f8f5af242d754cd2, type: 2}
       propertyPath: m_Name
       value: Balloon (1)
@@ -703,6 +725,11 @@ Prefab:
     - target: {fileID: 4179920796429254, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54570930339073768, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
@@ -753,6 +780,16 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e81805fbe43ed064d869943efb2c9c87, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1378554964 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1436084349906356, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+    type: 2}
+  m_PrefabInternal: {fileID: 417928039}
+--- !u!1 &1402467203 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1436084349906356, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+    type: 2}
+  m_PrefabInternal: {fileID: 108334272}
 --- !u!1001 &1436017347
 Prefab:
   m_ObjectHideFlags: 0
@@ -805,12 +842,12 @@ Prefab:
     - target: {fileID: 224952198442000842, guid: 2a6a582021565da4c9f41cff6d77187f,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 517.49
+      value: 566.49
       objectReference: {fileID: 0}
     - target: {fileID: 224952198442000842, guid: 2a6a582021565da4c9f41cff6d77187f,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 201.13
+      value: 317.63
       objectReference: {fileID: 0}
     - target: {fileID: 1529827938174194, guid: 2a6a582021565da4c9f41cff6d77187f, type: 2}
       propertyPath: m_Name
@@ -1120,8 +1157,7 @@ Prefab:
         type: 2}
       propertyPath: ObjectToLift
       value: 
-      objectReference: {fileID: 1436084349906356, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
-        type: 2}
+      objectReference: {fileID: 14718069}
     - target: {fileID: 1549675718752888, guid: 2c89cbcbeb58ff24f8f5af242d754cd2, type: 2}
       propertyPath: m_Name
       value: Balloon (3)
@@ -1184,6 +1220,11 @@ Prefab:
     - target: {fileID: 4179920796429254, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54570930339073768, guid: 6a3cd40744e4c2c49b8dec6233fcf779,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3cd40744e4c2c49b8dec6233fcf779, type: 2}
