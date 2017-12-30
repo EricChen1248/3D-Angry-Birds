@@ -1,8 +1,15 @@
-<<<<<<< HEAD
-{"Level":1,"TwoStar":50,"ThreeStar":100,"Pigs":3}
-{"Level":3,"TwoStar":1500,"ThreeStar":3000,"Pigs":3}
-=======
-{"Level":1,"TwoStar":50,"ThreeStar":100,"Pigs":1}
-{"Level":2,"TwoStar":50,"ThreeStar":100,"Pigs":3}
-{"Level":3,"TwoStar":1500,"ThreeStar":3000,"Pigs":2}
->>>>>>> 09866c2b5726de9880d055ccaf16a20da53397c0
+{"Level":1,"TwoStar":5000,"ThreeStar":9000,"Pigs":1}
+{"Level":2,"TwoStar":10000,"ThreeStar":20000,"Pigs":3}
+{"Level":3,"TwoStar":10000,"ThreeStar":15000,"Pigs":3}
+{"Level":4,"TwoStar":10000,"ThreeStar":15000,"Pigs":3}
+{"Level":5,"TwoStar":15000,"ThreeStar":20000,"Pigs":4}
+{"Level":6,"TwoStar":20000,"ThreeStar":25000,"Pigs":5}
+{"Level":7,"TwoStar":20000,"ThreeStar":30000,"Pigs":7}
+{"Level":8,"TwoStar":30000,"ThreeStar":35000,"Pigs":6}
+{"Level":9,"TwoStar":20000,"ThreeStar":30000,"Pigs":6}
+{"Level":10,"TwoStar":10000,"ThreeStar":15000,"Pigs":5}
+{"Level":11,"TwoStar":15000,"ThreeStar":25000,"Pigs":4}
+{"Level":12,"TwoStar":25000,"ThreeStar":32000,"Pigs":9}
+{"Level":13,"TwoStar":25000,"ThreeStar":30000,"Pigs":5}
+{"Level":14,"TwoStar":20000,"ThreeStar":25000,"Pigs":5}
+{"Level":15,"TwoStar":10000,"ThreeStar":15000,"Pigs":2}

@@ -62,6 +62,11 @@ namespace Controllers
             UnloadGui();
         }
 
+        internal void ReloadLevel()
+        {
+            pigsCount = levelDatas[CurrentLevel].Pigs;
+            SceneManager.LoadScene(string.Format("level{0}", CurrentLevel));
+        }
         internal void LoadLevels()
         {
             // Loading all level datas into program

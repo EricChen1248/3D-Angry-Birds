@@ -150,6 +150,7 @@ namespace Classes.Entities
             if (SlingshotPouch.Instance.transform.localPosition.z <= 0)
             {                
                 transform.parent = null;
+                GetComponent<SphereCollider>().isTrigger = false;
                 SlingshotPouch.Instance.GetComponent<SlingshotPouch>().CurrentAmmo = null;
                 ReloadAmmo();
                 IsShot = false;
