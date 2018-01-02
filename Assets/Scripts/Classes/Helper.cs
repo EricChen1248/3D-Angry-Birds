@@ -7,7 +7,6 @@ namespace Classes
     internal static class Helper
     {
         internal static System.Random Random = new System.Random();
-        internal static GameObject ExplosionFragment = (GameObject) Resources.Load("Explosion Fragment");
 
         internal static void GenerateExplosion(Vector3 position)
         {
@@ -15,6 +14,8 @@ namespace Classes
             const float radius = 20f;
             const float upwards = 3f;
 
+            var smoke = Object.Instantiate((GameObject) Resources.Load("SmokeSystem"));
+            smoke.transform.position = position;
             var colliders = Physics.OverlapSphere(position, 20);
             foreach (var hit in colliders)
             {
